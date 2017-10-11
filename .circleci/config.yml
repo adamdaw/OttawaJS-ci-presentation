@@ -58,9 +58,11 @@ workflows:
         filters:
           branches:
             only: master
-deployment:
-  staging:
-    branch: master
-    heroku:
-      appname: ottawajs-presentation
+      - deployment:
+          staging:
+            branch: master
+            heroku:
+              appname: ottawajs-presentation
 
+
+            
