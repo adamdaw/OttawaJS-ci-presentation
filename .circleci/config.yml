@@ -52,18 +52,3 @@ jobs:
             branch: master
             heroku:
               appname: ottawajs-presentation
-
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-        requires: 
-          build
-        filters:
-          branches:
-            only: master
-      
-
-            
