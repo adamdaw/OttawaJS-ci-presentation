@@ -35,7 +35,18 @@ jobs:
         
       # run tests!
       - run: yarn test
-
+      - run: bash .circleci/setup-heroku.sh
+        - add_ssh_keys:
+          fingerprints:
+            - "83:6d:67:e5:1c:4a:e5:dd:84:cc:c4:13:31:65:b4:44"
+        - deploy:
+          name: Deploy Master to Heroku
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git push heroku master
+              heroku run python manage.py deploy
+              heroku restart
+            fi
   test:
     docker:
       - image: circleci/node:7.10
@@ -47,8 +58,17 @@ jobs:
       - run:
         name: Move test results
         command: if [[ -e test-results.xml ]]; then cp test-results.xml $CIRCLE_TEST_REPORTS/test-results.xml; fi
-  deployment:
-          staging:
-            branch: master
-            heroku:
-              appname: ottawajs-presentation
+      
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+        requires: 
+          build
+        filters:
+          branches:
+            only: master
+
+            
