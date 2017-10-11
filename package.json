@@ -1,0 +1,19 @@
+{
+  "name": "ci-presentation",
+  "version": "1.0.0",
+  "description": "example CI application with testing on circleci",
+  "main": "index.js",
+  "repository": "git@github.com:adamdaw/OttawaJS-ci-presentation.git",
+  "author": "Adam Daw <adam@adamdaw.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mocha": "^4.0.1",
+    "mocha-circleci-reporter": "^0.0.2",
+    "supertest": "^3.0.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node_modules/.bin/mocha --reporter mocha-circleci-reporter test/*.js"
+  }
+}
