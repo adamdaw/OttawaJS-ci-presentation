@@ -35,6 +35,7 @@ jobs:
         
       # run tests!
       - run: yarn test
+      
       - run: bash .circleci/setup-heroku.sh
         - add_ssh_keys:
           fingerprints:
