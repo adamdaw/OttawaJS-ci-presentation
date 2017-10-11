@@ -59,17 +59,3 @@ jobs:
       - run:
         name: Move test results
         command: if [[ -e test-results.xml ]]; then cp test-results.xml $CIRCLE_TEST_REPORTS/test-results.xml; fi
-      
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-        requires: 
-          build
-        filters:
-          branches:
-            only: master
-
-            
