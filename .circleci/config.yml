@@ -41,13 +41,13 @@ jobs:
           fingerprints: 
             - "83:6d:67:e5:1c:4a:e5:dd:84:cc:c4:13:31:65:b4:44"
       - deploy:
-        name: Deploy Master to Heroku
-        command: |
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            git push heroku master
-            heroku run python manage.py deploy
-            heroku restart
-          fi
+          name: Deploy Master to Heroku
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git push heroku master
+              heroku run python manage.py deploy
+              heroku restart
+            fi
   test:
     docker:
       - image: circleci/node:7.10
