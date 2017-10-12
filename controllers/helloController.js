@@ -1,7 +1,7 @@
 const HelloController = {
  
     sayHello: function() {
-        return "Hello World!";
+        return "Greetings Planet!";
     }
  };
  

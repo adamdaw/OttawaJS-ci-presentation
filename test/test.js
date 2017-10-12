@@ -3,7 +3,7 @@ const HelloController = require('../controllers/helloController');
 
 describe('GET /', function() {
     it('should respond with Hello World', function() {
-        assert.equal(HelloController.sayHello(), "Hello World!");
+        assert.equal(HelloController.sayHello(), "Greetings Planet!");
     });
 });
 
